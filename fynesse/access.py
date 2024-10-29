@@ -28,6 +28,7 @@ def download_price_paid_data(year_from, year_to):
   file_name = "/pp-<year>-part<part>.csv"
 
   for year in range(year_from, (year_to+1)):
+    print ("Downloading data for year: " + str(year))
     for part in range(1,3):
       url = base_url + file_name.replace("<year>", str(year)).replace("<part>", str(part))
       response = requests.get(url)
