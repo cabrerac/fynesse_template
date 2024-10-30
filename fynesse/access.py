@@ -37,6 +37,8 @@ def download_price_paid_data(year_from, year_to):
         with open("." + file_name.replace("<year>", str(year)).replace("<part>", str(part)), "wb") as file:
           file.write(response.content)
 
+import pymysql
+
 def create_connection(user, password, host, database, port=3306):
     """ Create a database connection to the MariaDB database
         specified by the host url and database name.
@@ -56,6 +58,7 @@ def create_connection(user, password, host, database, port=3306):
                                local_infile=1,
                                db=database
                                )
+        print(f"Connection established!")
     except Exception as e:
         print(f"Error connecting to the MariaDB Server: {e}")
     return conn
